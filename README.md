@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Gym Membership Management 
 
-## Getting Started
+## About
 
-First, run the development server:
+> I got this project idea to solve the problem of my gym where the owner manages the membership process through manual paper works.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Next JS (App Router)
+- Clerk (for Authentication and Authorization)
+- MongoDB
+- ShadCN
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Authentication and Authorization
+- CRUD (for both membership and body measurements)
+- Filter (New Members, 1 Month, 3 Months, Expire Soon)
+- Search
 
-## Learn More
+## Set up
 
-To learn more about Next.js, take a look at the following resources:
+Step 1: Install Next JS in your local development environment (Ref: [Next.JS official documentation (https://nextjs.org/docs/getting-started/installation)])
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Step 2: Install Clerk library and create your own API keys, save it in `.env.local` ([Official Documentation (https://clerk.com/docs/quickstarts/nextjs)])
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Step 3: Install Shadcn ([Official Documentation (https://ui.shadcn.com/docs/installation/next)])
 
-## Deploy on Vercel
+Step 4: Choose your own database (MySQL, MongoDB, PostgreSQL,...) and start Coding🥳🥳
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## What is Server Action
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Asynchronous functions which are executed on servers and can be used in both "client" and "server" components for data fetching and mutation.
+
+With server actions, there is no need to use `api routes` for http methods, "POST, GET, PATCH, PUT, DELETE". All of these can be performed by function execution.
+
+![Server Action Code](./public/server-action-code.png)
+
+In the previous version, api routes are used to hanlde http methods. In this version, server actions are used.
+
+## Reference
+
+[Using forms in Next JS](https://youtu.be/RadgkoJrhu0?si=QvSgYEvAMjNG9T3Y)
+
+[Next.js server actions](https://youtu.be/RadgkoJrhu0?si=QvSgYEvAMjNG9T3Y)
+
