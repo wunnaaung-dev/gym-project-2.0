@@ -47,16 +47,11 @@ export const MemberForm = () => {
 
   const onSubmit = async (values: z.infer<typeof Customer>) => {
     await createNewCustomer({
-      name: values.customer_name,
+      customer_name: values.customer_name,
       gender: values.gender,
-      phone: values.phoneNumber,
+      phoneNumber: values.phoneNumber,
       address: values.address,
       paymentType: values.paymentType,
-      _id: "",
-      expireDate: new Date(),
-      bodyMeasurements: [],
-      createdAt: new Date(),
-      updatedAt: new Date(),
     });
     setShouldCloseForm(true);
   };

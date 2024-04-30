@@ -5,19 +5,27 @@ import { connectToDB } from "@/utils/database";
 import { calculateExpireDate } from "@/utils/date";
 import { revalidatePath } from "next/cache";
 
+interface NewCustomerInput {
+  customer_name: string;
+  gender: string;
+  phoneNumber: string;
+  address: string;
+  paymentType: string;
+}
+
 export const createNewCustomer = async ({
-  name,
+  customer_name,
   gender,
-  phone,
+  phoneNumber,
   address,
   paymentType,
-}: NewLifeGymMember) => {
+}: NewCustomerInput) => {
   try {
     await connectToDB();
     const newCustomer = new Customer({
-      name: name,
+      name: customer_name,
       gender: gender,
-      phoneNumber: phone,
+      phoneNumber: phoneNumber,
       address: address,
       paymentType: paymentType,
       expireDate: calculateExpireDate(paymentType),
