@@ -25,7 +25,13 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "./ui/button";
-import { DialogClose, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "./ui/dialog";
+import {
+  DialogClose,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "./ui/dialog";
 import { createNewCustomer } from "@/actions/customerActions";
 import { Customer, Gender, Payment } from "@/utils/validations";
 
@@ -46,6 +52,11 @@ export const MemberForm = () => {
       phone: values.phoneNumber,
       address: values.address,
       paymentType: values.paymentType,
+      _id: "",
+      expireDate: new Date(),
+      bodyMeasurements: [],
+      createdAt: new Date(),
+      updatedAt: new Date(),
     });
     setShouldCloseForm(true);
   };
@@ -53,7 +64,9 @@ export const MemberForm = () => {
   return (
     <Form {...form}>
       {form.formState.isSubmitted ? (
-        <p className="text-center font-bold text-xl text-green-700">Data added successfully</p>
+        <p className="text-center font-bold text-xl text-green-700">
+          Data added successfully
+        </p>
       ) : (
         <form
           onSubmit={form.handleSubmit(onSubmit)}
