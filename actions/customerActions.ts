@@ -30,19 +30,19 @@ export const createNewCustomer = async ({
   }
 };
 
-export const getCustomersInfo = async () => {
+export const getCustomersInfo = async (): Promise<NewLifeGymMember[]> => {
   try {
     await connectToDB();
     const customers = await Customer.find()
       .sort({ createdAt: -1 })
       .populate("name")
       .limit(30);
-    return customers;
+    return customers as NewLifeGymMember[];
   } catch (error) {
     console.log(error);
+    throw error;
   }
 };
-
 export const getCustomersByQueryType = async (queryType: string) => {
   try {
     let customers;
@@ -86,7 +86,7 @@ export const getCustomersByQueryType = async (queryType: string) => {
   }
 };
 
-export const getCustomersByName = async (name: string) => {
+export const getCustomersByName = async (name: string) : Promise<NewLifeGymMember[]> => {
   try {
     await connectToDB();
     // Use regular expression to match names containing the provided value
@@ -94,7 +94,7 @@ export const getCustomersByName = async (name: string) => {
       .sort({ createdAt: -1 })
       .populate("name")
       .limit(20);
-    return customers;
+    return customers as NewLifeGymMember[];
   } catch (error) {
     console.error("Error fetching customers by name:", error);
     throw error;

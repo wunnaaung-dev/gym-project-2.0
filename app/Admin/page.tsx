@@ -10,7 +10,7 @@ import {
 import Customers from "@/components/Customers";
 
 const page = async ({
-  searchParams,
+  searchParams
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) => {
@@ -18,23 +18,21 @@ const page = async ({
     redirect("/");
   }
 
-  let data;
+  let data: NewLifeGymMember[]  = await getCustomersInfo()
 
   const filterValue = searchParams?.filter;
   const filterName = searchParams?.customerName;
-  if (!filterValue) {
-    data = await getCustomersInfo();
-  } else {
-    if (Array.isArray(filterValue)) {
-      const firstFilterValue = filterValue[0];
-      data = await getCustomersByQueryType(firstFilterValue);
-    } else {
-      data = await getCustomersByQueryType(filterValue);
-    }
+
+  try {
+    if(filterValue) data = await getCustomersByQueryType(filterValue as string)
+  } catch (error) {
+    console.log(error)
   }
 
-  if (filterName) {
-    data = await getCustomersByName(filterName as string);
+  try {
+    if(filterName) data = await getCustomersByName(filterName as string)
+  } catch (error) {
+    console.log(error)
   }
   return (
     <>
